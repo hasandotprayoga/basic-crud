@@ -1,6 +1,6 @@
 <?php
 
-namespace App\HDP;
+namespace BasicCrud;
 
 use Illuminate\Http\Request;
 
