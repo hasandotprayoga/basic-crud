@@ -1,0 +1,25 @@
+{
+    "name": "hasandotprayoga/basic-crud",
+    "description": "Laravel Basic CRUD for rest API",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Hasan Prayoga",
+            "email": "hasandotprayoga@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "BasicCrud\\": "src/"
+        }
+    },
+    "require": {
+        "hasandotprayoga/format-response": "*"
+    },
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/hasandotprayoga/format-response.git"
+        }
+    ],
+}
