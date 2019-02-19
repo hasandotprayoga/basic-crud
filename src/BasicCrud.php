@@ -13,9 +13,7 @@ trait BasicCrud
         $data = $request->all();
 
         $filter = $this->filter($request);
-        // print_r($filter);exit;
         $fields = $this->select($request);
-        // echo $string;exit;
 
         $sort = ['id','asc'];    
         if (isset($request->sort)) {
@@ -28,9 +26,6 @@ trait BasicCrud
             }
         }
 
-        // dd($vFields);
-        // dd($sort);
-        
         $data = $this->model::when(count($filter['regular'])>0,function($query) use ($filter){
           return $query->where($filter['regular']);  
         })
