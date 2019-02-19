@@ -7,14 +7,7 @@ Add to composer.json
     "require": {
         ...
         "hasandotprayoga/basic-crud": "*"
-    },
-    "repositories": [
-        ...
-        {
-            "type": "vcs",
-            "url": "https://github.com/hasandotprayoga/basic-crud.git"
-        }
-    ]
+    }
 ```
 
 On your terminal, run `composer update`
