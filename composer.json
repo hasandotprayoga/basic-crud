@@ -10,16 +10,10 @@
     ],
     "autoload": {
         "psr-4": {
-            "BasicCrud\\": "src/"
+            "hasandotprayoga\\": "src/"
         }
     },
     "require": {
         "hasandotprayoga/format-response": "*"
-    },
-    "repositories": [
-        {
-            "type": "vcs",
-            "url": "https://github.com/hasandotprayoga/format-response.git"
-        }
-    ]
+    }
 }

@@ -4,9 +4,17 @@ namespace BasicCrud;
 
 use Illuminate\Http\Request;
 
+/**
+ * Trait BasicCrud
+ * @package BasicCrud
+ */
 trait BasicCrud
 {
-    
+
+    /**
+     * @param Request $request
+     * @return mixed
+     */
     public function index(Request $request)
     {
 
@@ -83,6 +91,10 @@ trait BasicCrud
         return $this->response();
     }
 
+    /**
+     * @param Request $request
+     * @return mixed
+     */
     public function store (Request $request){
 
         $this->validate($request, $this->insertValidation);
@@ -98,6 +110,10 @@ trait BasicCrud
         return $this->response();
     }
 
+    /**
+     * @param Request $request
+     * @return mixed
+     */
     public function update(Request $request){
 
         $this->validate($request, $this->updateValidation);
@@ -122,8 +138,13 @@ trait BasicCrud
 
         return $this->response();
     }
-    
-    public function destroy($id,$type='hard'){
+
+    /**
+     * @param $id
+     * @param string $type
+     * @return mixed
+     */
+    public function destroy($id, $type='hard'){
         if ($type=='hard') {
             $data = $this->hardDelete($id);
         } else {
@@ -137,7 +158,12 @@ trait BasicCrud
         return $data;
     }
 
-    protected function softDelete($id,$dataDelete)
+    /**
+     * @param $id
+     * @param $dataDelete
+     * @return mixed
+     */
+    protected function softDelete($id, $dataDelete)
     {
         $data = $this->model::find($id);
         if ($data) {
@@ -159,6 +185,10 @@ trait BasicCrud
         return $this->response();
     }
 
+    /**
+     * @param $id
+     * @return mixed
+     */
     protected function hardDelete($id)
     {
         $data = $this->model::find($id);
@@ -182,6 +212,10 @@ trait BasicCrud
         return $this->response();
     }
 
+    /**
+     * @param $request
+     * @return array|string
+     */
     protected function select($request)
     {
 
@@ -200,6 +234,10 @@ trait BasicCrud
         return $vFields;
     }
 
+    /**
+     * @param $request
+     * @return array
+     */
     protected function filter($request)
     {
         $filter = ['regular'=>[],'between'=>[],'in'=>[]];
@@ -231,6 +269,10 @@ trait BasicCrud
         return $filter;
     }
 
+    /**
+     * @param $attr
+     * @return mixed
+     */
     protected function isAttribute($attr){$a = \Schema::hasColumn(app($this->model)->getTable(),$attr);return $a;}
 
 }
