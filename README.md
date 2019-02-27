@@ -25,7 +25,7 @@ This package require `hasandotprayoga/format-resposne` for response. See configu
 
     class ExampleController extends Controller
     {
-        use \Hasandotprayoga\BasicCrud; // call trait
+        use \BasicCrud\BasicCrud; // call trait
 
         public $model = \App\Models\Fakers::class; // variable for your model
         
