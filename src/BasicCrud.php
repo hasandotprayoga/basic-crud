@@ -3,6 +3,7 @@
 namespace BasicCrud;
 
 use Illuminate\Http\Request;
+use Validator;
 
 /**
  * Trait BasicCrud
