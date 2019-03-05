@@ -275,4 +275,21 @@ trait BasicCrud
      */
     protected function isAttribute($attr){$a = \Schema::hasColumn(app($this->model)->getTable(),$attr);return $a;}
 
+    /**
+     * @param type $request 
+     * @param type $rule 
+     * @return mixed
+     */
+    protected function validator($request, $rule)
+    {
+        $validator = Validator::make($request->all(), $rule);
+
+        if ($validator->fails()) {
+            $this->responseCode = 422;
+            $this->results = ['d'];
+            $this->message = $validator;
+            return $this->response();
+        }
+    }
+
 }
