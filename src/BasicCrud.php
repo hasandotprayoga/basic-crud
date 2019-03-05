@@ -97,7 +97,7 @@ trait BasicCrud
      */
     public function store (Request $request){
 
-        $this->validate($request, $this->insertValidation);
+        $this->validator($request, $this->insertValidation);
 
         $data = $this->model::create($request->all());
 
@@ -116,7 +116,7 @@ trait BasicCrud
      */
     public function update(Request $request){
 
-        $this->validate($request, $this->updateValidation);
+        $this->validator($request, $this->updateValidation);
 
         $data = $this->model::find($request->id);
         if ($data) {
