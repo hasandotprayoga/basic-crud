@@ -98,7 +98,15 @@ trait BasicCrud
      */
     public function store (Request $request){
 
-        $this->validator($request, $this->insertValidation);
+        $validator = Validator::make($request->all(), $this->insertValidation);
+
+        if ($validator->fails()) {
+            $this->responseCode = 422;
+            $this->results = [];
+            $this->messages = $validator->errors();
+            return $this->response();
+        }
+
 
         $data = $this->model::create($request->all());
 
@@ -117,8 +125,15 @@ trait BasicCrud
      */
     public function update(Request $request){
 
-        $this->validator($request, $this->updateValidation);
+        $validator = Validator::make($request->all(), $this->insertValidation);
 
+        if ($validator->fails()) {
+            $this->responseCode = 422;
+            $this->results = [];
+            $this->messages = $validator->errors();
+            return $this->response();
+        }
+        
         $data = $this->model::find($request->id);
         if ($data) {
             $data->update($request->all());
@@ -275,22 +290,4 @@ trait BasicCrud
      * @return mixed
      */
     protected function isAttribute($attr){$a = \Schema::hasColumn(app($this->model)->getTable(),$attr);return $a;}
-
-    /**
-     * @param type $request 
-     * @param type $rule 
-     * @return mixed
-     */
-    protected function validator($request, $rule)
-    {
-        $validator = Validator::make($request->all(), $rule);
-
-        if ($validator->fails()) {
-            $this->responseCode = 422;
-            $this->results = ['d'];
-            $this->message = $validator;
-            return $this->response();
-        }
-    }
-
 }
