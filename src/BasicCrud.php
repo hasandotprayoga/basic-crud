@@ -128,7 +128,7 @@ trait BasicCrud
                 'get'=>$request->all()
             ];
         }else{
-            $this->responseCode = 422;
+            $this->responseCode = 404;
             $this->results = [];
             $this->messages = ['id'=>'ID can\'t be found'];
             $this->request = [
@@ -178,7 +178,7 @@ trait BasicCrud
                 ]
             ];
         }else{
-            $this->responseCode = 422;
+            $this->responseCode = 404;
             $this->results = [];
             $this->messages = ['id'=>'ID can\'t be found'];
         }
@@ -204,7 +204,7 @@ trait BasicCrud
                 ]
             ];
         } else {
-            $this->responseCode = 422;
+            $this->responseCode = 404;
             $this->results = [];
             $this->messages = ['id'=>'ID can\'t be found'];
         }
