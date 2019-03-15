@@ -125,7 +125,7 @@ trait BasicCrud
      */
     public function update(Request $request){
 
-        $validator = Validator::make($request->all(), $this->insertValidation);
+        $validator = Validator::make($request->all(), $this->updateValidation);
 
         if ($validator->fails()) {
             $this->responseCode = 422;
