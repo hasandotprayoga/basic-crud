@@ -285,9 +285,29 @@ trait BasicCrud
         return $filter;
     }
 
+    public function getEnumValue($field, $array=false)
+    {
+        $table = app($this->model)->getTable();
+
+        $type = DB::select(DB::raw('SHOW COLUMNS FROM '.$table.' WHERE Field = "'.$field.'"'))[0]->Type;
+        preg_match('/^enum\((.*)\)$/', $type, $matches);
+        $values = [];
+
+        foreach(explode(',', $matches[1]) as $value){
+            $values[] = trim($value, "'");
+        }
+
+        if ($array) {
+            return $values;
+        } else {
+            return implode(',',$values);
+        }
+    }
+
     /**
      * @param $attr
      * @return mixed
      */
     protected function isAttribute($attr){$a = \Schema::hasColumn(app($this->model)->getTable(),$attr);return $a;}
+
 }
