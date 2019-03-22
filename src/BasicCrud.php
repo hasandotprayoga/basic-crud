@@ -107,7 +107,6 @@ trait BasicCrud
             return $this->response();
         }
 
-
         $data = $this->model::create($request->all());
 
         $this->responseCode = 200;
